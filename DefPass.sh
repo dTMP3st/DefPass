@@ -2,24 +2,43 @@
 
 clear
 
-Banner=$(	echo "		+==================================================+"
+BannerFunction(){
+	echo "		+==================================================+"
 	echo "		|			DefPass                    |"
 	echo "		|	Anakind4, dTMP3st - Cyber Strike Force	   |"
 	echo "		|	   	     Version - 1.0                 |"
-	echo "		+==================================================+")
+	echo "		+==================================================+"
+}
+
+PasswordAttackFunction(){
+	echo ""
+	echo -n "I would like to validate the use of passwords on the target [Y/n] "
+	read PasswordAttackConfirmation
+	if [ "$PasswordAttackConfirmation" == "" ]; then
+		echo "[+] Attacking ..."
+	else
+		echo "[-] Exiting ..."
+	fi
+}
+
+# Scan(){}
+
+# Exploitation(){}
+
 
 if [ "$1" == "" ] || [ "$2" == "" ] && [ "$1" != "--help" ]; then
-	echo "$Banner"
+	BannerFunction
 	echo ""
 	echo "Use mode: $0 <Vendor> <Product>"
 	echo "Use $0 --help to view available parameters"
 elif [ "$1" == "--help" ]; then
-	echo "$Banner"
+	BannerFunction
 	echo ""
 	echo "Parameters used by the program:"
+	echo ""
 	echo "--all - List all default passwords for all products from a specific vendor."	
 elif [ "$2" == "--all" ]; then
-	echo "$Banner"
+	BannerFunction
 	echo ""
 	echo "Listing all standard passwords of products off $1 vendor."
 	echo ""
@@ -32,10 +51,11 @@ elif [ "$2" == "--all" ]; then
 			DetectUsername=$(echo "$DefaultPassword" | cut -d "," -f1)
 			DetectPassword=$(echo "$DefaultPassword" | cut -d "," -f2)
 			echo "Username: $DetectUsername | Password: $DetectPassword"
+			PasswordAttackFunction
 		done
 	fi
 else
-	echo "$Banner"
+	BannerFunction
 	echo ""
 	DefPassValidation=$(cat Vendors/$1/$2.lst 2> /dev/null)
 	if [ "$DefPassValidation" == "" ]; then
@@ -46,6 +66,7 @@ else
 			DetectUsername=$(echo "$DefaultPassword" | cut -d "," -f1)
 			DetectPassword=$(echo "$DefaultPassword" | cut -d "," -f2)
 			echo "Username: $DetectUsername | Password: $DetectPassword"
+			PasswordAttackFunction
 		done
 	fi
 fi
