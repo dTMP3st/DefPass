@@ -8,10 +8,16 @@ Banner=$(	echo "		+==================================================+"
 	echo "		|	   	     Version - 1.0                 |"
 	echo "		+==================================================+")
 
-if [ "$1" == "" ] || [ "$2" == "" ]; then
+if [ "$1" == "" ] || [ "$2" == "" ] && [ "$1" != "--help" ]; then
 	echo "$Banner"
 	echo ""
 	echo "Use mode: $0 <Vendor> <Product>"
+	echo "Use $0 --help to view available parameters"
+elif [ "$1" == "--help" ]; then
+	echo "$Banner"
+	echo ""
+	echo "Parameters used by the program:"
+	echo "--all - List all default passwords for all products from a specific vendor."	
 elif [ "$2" == "--all" ]; then
 	echo "$Banner"
 	echo ""
