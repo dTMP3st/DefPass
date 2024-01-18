@@ -14,8 +14,12 @@ PasswordAttackFunction(){
 	echo ""
 	echo -n "I would like to validate the use of passwords on the target [Y/n] "
 	read PasswordAttackConfirmation
-	if [ "$PasswordAttackConfirmation" == "" ]; then
-		echo "[+] Attacking ..."
+	if [ "$PasswordAttackConfirmation" == "" ] || [ "$PasswordAttackConfirmation" == "Y" ] || [ "$PasswordAttackConfirmation" == "y" ]; then
+		echo -n "Set a valid address for the target: "
+		read TargetAddress
+		echo -n "Set the port the service is running on: "
+		read TargetPort
+		echo "[+] Attacking $TargetAddress on port $TargetPort ..."
 	else
 		echo "[-] Exiting ..."
 	fi
