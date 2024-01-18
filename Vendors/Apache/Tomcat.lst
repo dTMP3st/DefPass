@@ -1,0 +1,12 @@
+admin,tomcat
+admin,admin
+tomcat,tomcat
+admin,tomcat
+root,root
+role1,role1
+role,changethis
+root,changethis
+tomcat,changethis
+admin,j5Brn9
+both,tomcat
+role1,tomcat
