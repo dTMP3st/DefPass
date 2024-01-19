@@ -19,7 +19,7 @@ PasswordAttackFunction(){
 		read TargetAddress
 		echo -n "Set the port the service is running on: "
 		read TargetPort
-		# echo "[+] Attacking $TargetAddress on port $TargetPort ..."
+		echo "[+] Attacking $TargetAddress on port $TargetPort ..."
 	else
 		echo "[-] Exiting ..."
 	fi
@@ -64,7 +64,6 @@ else
 	DefPassValidation=$(cat Vendors/$1/$2.lst 2> /dev/null)
 	if [ "$DefPassValidation" == "" ]; then
 		echo "This product is not registered in the database."
-		# Validar possibilidade de implementar busca pela internet e em seguida implementar na base de dados.
 	else
 		for DefaultPassword in $(cat Vendors/$1/$2.lst); do
 			DetectUsername=$(echo "$DefaultPassword" | cut -d "," -f1)
