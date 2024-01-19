@@ -19,7 +19,7 @@ PasswordAttackFunction(){
 		read TargetAddress
 		echo -n "Set the port the service is running on: "
 		read TargetPort
-		echo "[+] Attacking $TargetAddress on port $TargetPort ..."
+		# echo "[+] Attacking $TargetAddress on port $TargetPort ..."
 	else
 		echo "[-] Exiting ..."
 	fi
